@@ -10,6 +10,16 @@
       </ul>
     </div>
   <% end %>
+  
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  
+  <p>
+    <%= f.file_field :document %>
+    <%= f.hidden_field :document_cache %>
+  </p>
 
   <div class="actions">
     <%= f.submit %>

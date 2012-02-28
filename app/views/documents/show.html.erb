@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @document.title %></h1>
+
+<div>
+  <%= image_tag @document.document_url %>
+</div>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
