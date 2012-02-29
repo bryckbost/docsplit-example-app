@@ -3,7 +3,7 @@
 <h1><%= @document.title %></h1>
 
 <div>
-  <%= image_tag @document.document_url %>
+  <%= image_tag "/#{@document.images.first}" %>
 </div>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |

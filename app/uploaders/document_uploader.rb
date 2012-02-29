@@ -1,11 +1,9 @@
 # encoding: utf-8
-require 'split'
 class DocumentUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
-  include Split
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -15,14 +13,6 @@ class DocumentUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-
-  def images_dir
-    "images/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-
-  def text_dir
-    "text/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -37,9 +27,6 @@ class DocumentUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
   
-  process :extract_images => ["700x"]
-  process :extract_text
-
   # Create different versions of your uploaded files:
   # version :thumb do
   #   process :scale => [50, 50]

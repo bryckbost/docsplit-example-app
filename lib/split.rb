@@ -1,18 +1,19 @@
 module Split
   [:author, :date, :creator, :keywords, :producer, :subject, :title, :length].each do |key|
     module_eval <<-EOS
-      def self.#{key}(current_path, opts={})
-        ::Docsplit.extract_#{key}(current_path)
+      def self.#{key}(file, opts={})
+        Docsplit.extract_#{key}(file)
       end
     EOS
   end
   
-  def extract_images(size)
-    Docsplit.extract_images(current_path, :size => size, :format => :png, :output => images_dir)
+  def extract_images(size="700x")
+    Docsplit.extract_images(document.file.file, :size => size, :format => :png, :output => "public/#{document.store_dir}")
+    true
   end
   
   def extract_text
-    Docsplit.extract_text(current_path, :ocr => false, :output => text_dir)
-  end
-  
+    Docsplit.extract_text(document.file.file, :ocr => false, :output => document.store_dir)
+    true
+  end  
 end
