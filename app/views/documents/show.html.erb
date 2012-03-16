@@ -3,7 +3,9 @@
 <h1><%= @document.title %></h1>
 
 <div>
-  <%= image_tag "/#{@document.images.first}" %>
+  <% @document.images.each do |image| %>
+    <%= image_tag "/#{image}" %>
+  <% end %>
 </div>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
